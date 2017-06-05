@@ -1,0 +1,19 @@
+{
+ "name": "async-map",
+ "version": "0.1.0",
+ "description": "Map over values in a list asynchronously",
+ "keywords": [
+	 "async",
+	 "map"
+ ],
+ "main": "index.js",
+ "license": "MIT",
+ "author": "Brandon Semilla (https://github.com/semibran)",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/semibran/async-map.git"
+ },
+ "scripts": {
+  "test": "node test"
+ }
+}
