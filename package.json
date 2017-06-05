@@ -3,8 +3,8 @@
  "version": "0.1.0",
  "description": "Map over values in a list asynchronously",
  "keywords": [
-	 "async",
-	 "map"
+  "async",
+  "map"
  ],
  "main": "index.js",
  "license": "MIT",
