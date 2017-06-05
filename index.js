@@ -6,12 +6,8 @@ module.exports = function map(values, iterator, callback) {
 		function iterate(index) {
 			var value = values[index]
 			iterator(value, function next(error, value) {
-				if (error) {
-					callback(error)
-				} else {
-					result[index] = value
-					callback(null, value, index)
-				}
+				result[index] = value
+				callback(error, value, index)
 				if (index + 1 < length) {
 					iterate(index + 1)
 				}
