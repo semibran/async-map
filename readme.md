@@ -1,20 +1,40 @@
 # async-map
-> Map over values in a list asynchronously
+> Transform each value in an array asynchronously
 
+```sh
+npm install semibran/async-map
+```
+
+## usage
+```js
+const map = require('async-map')
+```
+
+### `result = map(values, iterator, callback)`
+Performs `iterator` on each value in `values` in sequence. `result` is populated as each value in the initial array is transformed.
+- `values`: An array of values to be transformed
+- `iterator`: A function of the form `iterator(value, callback)`, e.g. [`fs.stat(path, callback)`](https://nodejs.org/api/fs.html#fs_fs_stat_path_callback)
+- `callback`: A function of the form `callback(error, value, index)` which receives each transformed value as `iterator` completes
+
+## example
 ```js
 const map = require('async-map')
 const load = require('image-load')
 
 var paths = ['images/foo.png', 'images/bar.png']
-var images = map(paths, load, (error, image) => {
-	if (error) throw error
-	document.body.appendChild(image)
-})
-```
+var images = map(paths, load, (error, image, index) => {
+  if (error) throw error
 
-## install
-```sh
-npm install async-map
+  // Immediately add image to DOM...
+  document.body.appendChild(image)
+
+  // or, only display when all images have been loaded
+  if (images.length === paths.length) {
+    for (var image of images) {
+      document.body.appendChild(image)
+    }
+  }
+})
 ```
 
 ## license
