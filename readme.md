@@ -3,7 +3,7 @@
 
 ## install
 ```sh
-npm install semibran/async-map
+npm install async-map
 ```
 
 ## usage
