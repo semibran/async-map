@@ -1,5 +1,5 @@
 # async-map
-> Transform each value in an array asynchronously
+> Transform each value in an array asynchronously in parallel
 
 ## install
 ```sh
@@ -8,30 +8,23 @@ npm install async-map
 
 ## usage
 ```js
-const map = require('async-map')
-const load = require('img-load')
+const asyncMap = require('async-map')
+const loadImage = require('img-load')
 
-var paths = ['images/foo.png', 'images/bar.png']
-var images = map(paths, load, (error, image, index) => {
-  if (error) throw error
-
-  // Immediately add image to DOM...
-  document.body.appendChild(image)
-
-  // or, only display when all images have been loaded
-  if (images.length === paths.length) {
-    for (var image of images) {
-      document.body.appendChild(image)
-    }
+let paths = ['images/foo.png', 'images/bar.png']
+asyncMap(paths, loadImage, (err, images) => {
+  if (err) throw err
+  for (let image of images) {
+    document.body.appendChild(image)
   }
 })
 ```
 
-### `result = map(values, iterator, callback)`
-Performs `iterator` on each value in `values` in sequence. `result` is populated as each value in the initial array is transformed.
+### `asyncMap(values, iterator, callback) -> result`
+Performs `iterator` on each value in `values` in parallel, and passes the result into `callback` when complete.
 - `values`: An array of values to be transformed
-- `iterator`: A function of the form `iterator(value, callback)`, e.g. [`fs.stat(path, callback)`](https://nodejs.org/api/fs.html#fs_fs_stat_path_callback)
-- `callback`: A function of the form `callback(error, value, index)` which receives each transformed value as `iterator` completes
+- `iterator(value, callback)`: Any function that receives a value and a callback, e.g. [`fs.stat(path, callback)`](https://nodejs.org/api/fs.html#fs_fs_stat_path_callback)
+- `callback(err, result)`: The function called upon completion or abortion of the mapping process
 
 ## license
 [MIT](https://opensource.org/licenses/MIT) © [Brandon Semilla](https://git.io/semibran)

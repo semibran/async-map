@@ -1,18 +1,21 @@
-module.exports = function map(values, iterator, callback) {
-	var result = []
-	var length = values.length
-	if (length) {
-		iterate(0)
-		function iterate(index) {
-			var value = values[index]
-			iterator(value, function next(error, value) {
-				result[index] = value
-				callback(error, value, index)
-				if (index + 1 < length) {
-					iterate(index + 1)
-				}
-			})
-		}
-	}
-	return result
+module.exports = function asyncMap(values, iterator, callback) {
+  var results = []
+  var count = values.length
+  var error
+  if (!count) {
+    return callback(null, results)
+  }
+  for (var i = count; i--;) {
+    (function (i) {
+      iterator(values[i], function (err, result) {
+        if (error) return
+        if (err) error = err
+        if (error) return callback(error)
+        results[i] = result
+        if (!--count) {
+          callback(null, results)
+        }
+      })
+    })(i)
+  }
 }
