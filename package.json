@@ -1,16 +1,10 @@
 {
  "name": "async-map",
- "version": "0.1.0",
- "description": "Transform each value in an array asynchronously",
- "keywords": [
-  "async",
-  "map"
- ],
- "main": "index.js",
+ "version": "0.2.0",
+ "description": "Transform multiple values asynchronously",
+ "keywords": ["async", "asynchronous", "map"],
+ "files": ["index.js"],
  "license": "MIT",
  "author": "Brandon Semilla (https://github.com/semibran)",
- "repository": {
-  "type": "git",
-  "url": "https://github.com/semibran/async-map.git"
- }
+ "repository": "semibran/async-map"
 }
