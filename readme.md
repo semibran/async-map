@@ -1,5 +1,5 @@
 # async-map
-> Transform each value in an array asynchronously in parallel
+> Transform multiple values asynchronously
 
 ## install
 ```sh
