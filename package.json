@@ -1,10 +1,17 @@
 {
- "name": "async-map",
- "version": "0.2.0",
- "description": "Transform multiple values asynchronously",
- "keywords": ["async", "asynchronous", "map"],
- "files": ["index.js"],
- "license": "MIT",
- "author": "Brandon Semilla (https://github.com/semibran)",
- "repository": "semibran/async-map"
+  "name": "async-map",
+  "version": "0.2.0",
+  "description": "transform multiple values asynchronously in parallel",
+  "author": "semibran (Brandon Semilla)",
+  "repository": "semibran/async-map",
+  "license": "MIT",
+  "main": "lib/async-map.js",
+  "keywords": [
+    "async-map",
+    "async",
+    "asynchronous",
+    "map",
+    "transform",
+    "values"
+  ]
 }
