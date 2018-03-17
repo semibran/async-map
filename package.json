@@ -1,6 +1,6 @@
 {
   "name": "async-map",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "transform multiple values asynchronously in parallel",
   "author": "semibran (Brandon Semilla)",
   "repository": "semibran/async-map",
